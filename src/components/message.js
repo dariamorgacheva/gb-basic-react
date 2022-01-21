@@ -3,7 +3,8 @@ import '../App.css';
 function Message(props) {
   return (
     <div className='message-box'>
-      <div className="message-content">{props.text}</div> 
+      <div className="message-content">{props.author}</div>
+      <div className="message-content">{props.text}</div>  
     </div>
   );
 }
