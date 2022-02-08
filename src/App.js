@@ -2,15 +2,21 @@
 import "./App.css";
 import MessageInput from "./components/MessageInput";
 import ChatList from "./components/ChatList";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles ({
+  wrapper: {
+    display: "grid",
+    gridTemplateColumns: "200px 1fr"
+  }
+});
+
 
 function App() {
-  
+  const classes = useStyles();
 
-
-  return (
-
-    
-    <div className="classes.wrapper">
+  return (    
+    <div className={classes.wrapper}>
 
       <ChatList 
         list={[
@@ -28,6 +34,7 @@ function App() {
           },
         ]}
       />
+
       <MessageInput />
 
     </div>
