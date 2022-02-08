@@ -8,11 +8,12 @@ const [value, setValue] = useState('');
 
 
 
-const sendMessage = (author, text) => {
+const sendMessage = (author, text, key) => {
   const newMessageList = [...messageList];
   const newMessage = {
     author,
-    text
+    text,
+    key
   };
   newMessageList.push(newMessage);
   setMessageList(newMessageList);
@@ -33,8 +34,8 @@ const onChangeMessageInput = (event) => {
 useEffect(() => {
   if (messageList.length && !(messageList[messageList.length - 1].author === 'bot')) {
     setTimeout(() => {
-      setMessageList([...messageList, { author: 'bot', text: 'hi i am a robot' }])
-    }, 1000);
+      setMessageList([...messageList, { author: 'bot', text: 'hi i am a robot', key: "bot" + Date.now }])
+    }, 2000);
   }
 }, [messageList]);
 
@@ -47,6 +48,7 @@ return (
         onChange={onChangeMessageInput} 
         placeholder='Your Message'
         value={value}
+        author="user"
         type="text"
       />
     </form>
@@ -62,7 +64,7 @@ return (
     <Message 
       author={message.author} 
       text={message.text} 
-      key={message.id}
+      key={Date.parse}
     />
   )
 }
